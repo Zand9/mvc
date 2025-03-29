@@ -1,0 +1,58 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* background: url('../images/background.jpg'); 
+    background-size: cover; */
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+    border: 2px solid black;
+}
+
+h1 {
+    border-bottom: 4px double #ccc;
+}
+
+.site-title {
+    margin: 0 auto;
+    padding: 0.5em;
+    font-size: 3em;
+    color: white;
+}
+
+.site-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+nav {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    list-style: none;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+li {
+    display: inline;
+    margin: 1em;
+}
