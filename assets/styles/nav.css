@@ -1,0 +1,20 @@
+/* nav.css */
+
+nav {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    list-style: none;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+li {
+    display: inline;
+    margin: 1em;
+}
