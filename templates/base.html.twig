@@ -20,6 +20,7 @@
         <nav>
         <ul>
             <li><a href="{{ path('home') }}">Home</a></li>
+            <li><a href="{{ path('lucky') }}">Lucky</a></li>
             <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
             <li><a href="{{ path('about') }}">About</a></li>
             <li><a href="{{ path('report') }}">Report</a></li>
@@ -28,5 +29,10 @@
     <main>
         {% block body %}{% endblock %}
     </main>
+        {% block footer %}
+        <footer>
+            &copy; Copyright 2025 by: <a href="https://www.student.bth.se/~macm16/dbwebb-kurser/">Macm16</a>
+        </footer>
+        {% endblock %}
     </body>
 </html>

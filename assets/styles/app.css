@@ -1,8 +1,9 @@
 /* app.css */
 
+@import url("font.css");
+@import url("footer.css");
 @import url("header.css");
 @import url("nav.css");
-@import url("font.css");
 @import url("variables.css");
 
 html {
@@ -21,4 +22,5 @@ main {
     margin: 0 auto;
     padding: 1em;
     border: 2px solid black;
+    min-height: 50vh;
 }
