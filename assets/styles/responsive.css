@@ -1,0 +1,12 @@
+/* responsive.css */
+
+@media screen and (max-width: 600px) {
+    .intro {
+        flex-direction: column-reverse;
+    }
+
+    .introbild,
+    .about {
+        max-width: 100%;
+    }
+}

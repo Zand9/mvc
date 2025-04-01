@@ -2,9 +2,15 @@
 
 @import url("font.css");
 @import url("footer.css");
+@import url("gallery.css");
 @import url("header.css");
 @import url("nav.css");
+@import url("responsive.css");
 @import url("variables.css");
+
+* {
+    box-sizing: border-box;
+}
 
 html {
     overflow-x: hidden;
