@@ -1,7 +1,7 @@
 /* font.css */
 
 h1 {
-    border-bottom: 4px double #ccc;
+    border-bottom: 4px double var(--border-color);
 }
 
 .about h1 {
@@ -11,4 +11,5 @@ h1 {
 
 .about p {
     font-size: 1.2em;
+    color: var(--font-main-color);
 }

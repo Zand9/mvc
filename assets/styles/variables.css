@@ -3,4 +3,6 @@
 :root {
     --blue: #1e90ff;
     --white: #ffffff;
+    --font-main-color: rgb(0, 0, 0);
+    --border-color: #ccc;
 }
