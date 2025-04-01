@@ -10,11 +10,13 @@
 *****************************************
 
 // DESCRIPTION
+
 Report site for macm16 in the course MVC.
 Updated weekly with new features. 
 Check tags for more specific information about the updates.
 
 // GETTING STARTED
+
 1. CLONE THE REPOSITORY
 TYPE COMMAND
     "git clone https://github.com/Zand9/mvc"
@@ -38,4 +40,4 @@ OR (IF YOU USED SECOND COMMAND)
     http://localhost:8000/
 DONE!
 
-// THANKS FOR USING MY REPOSITORY! //
+// THANKS FOR USING MY REPOSITORY!
