@@ -1,0 +1,27 @@
+/* layout.css */
+
+.layout {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.layout:has(aside) {
+    display: flex;
+    gap: 1em;
+    align-items: flex-start;
+}
+
+main {
+    flex: 3 1 0;
+    min-width: 0;
+}
+
+aside {
+    flex: 1 1 0;
+    min-width: 0;
+    border: 2px solid black;
+    min-height: 50vh;
+}

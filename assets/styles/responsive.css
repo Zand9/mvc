@@ -9,4 +9,24 @@
     .about {
         max-width: 100%;
     }
+
+    .layout {
+        flex-direction: column;
+    }
+
+    main,
+    aside {
+        flex: unset;
+        width: 100%;
+    }
+
+    .layout.has-aside {
+        flex-direction: column;
+    }
+
+    main,
+    aside {
+        flex: unset;
+        width: 100%;
+    }
 }

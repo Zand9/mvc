@@ -4,12 +4,21 @@ h1 {
     border-bottom: 4px double var(--border-color);
 }
 
-.about h1 {
+main h1 {
     font-size: 2em;
     text-align: center;
 }
 
-.about p {
+main p {
     font-size: 1.2em;
     color: var(--font-main-color);
+}
+
+aside h1 {
+    font-size: 1.5em;
+    text-align: left;
+}
+
+aside p {
+    font-size: 1.1em;
 }

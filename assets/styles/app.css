@@ -4,6 +4,7 @@
 @import url("footer.css");
 @import url("gallery.css");
 @import url("header.css");
+@import url("layout.css");
 @import url("nav.css");
 @import url("responsive.css");
 @import url("variables.css");
@@ -24,7 +25,7 @@ body {
 }
 
 main {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 1em;
     border: 2px solid black;
