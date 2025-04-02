@@ -29,4 +29,14 @@
         flex: unset;
         width: 100%;
     }
+
+    ul {
+        gap: 0.2em;
+        font-size: 1.2em;
+    }
+
+    li {
+        display: inline;
+        margin: 0.2em;
+    }
 }
