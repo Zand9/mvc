@@ -26,3 +26,45 @@ aside {
     border: 2px solid black;
     min-height: 50vh;
 }
+
+.mainbox {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.introbild {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-right: 1em;
+}
+
+.about {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin-left: 1em;
+}
+
+.aboutbox {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.abouttext {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: 1em;
+}
+
+.aboutbild {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-right: 1em;
+}

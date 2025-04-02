@@ -4,20 +4,30 @@
 
 {% block body %}
     <h1>About</h1>
+        <div class="abouttext">
+            <h1>Välkommen till kursen MVC!</h1>
+            <p>
+                I den här kursen ska vi utveckla våra redan befintliga kunskaper i PHP, design samt databas.<br>
+                Vi kommer att använda oss utav ramverket Symphony.
+            </p>
+            <p>
+                Som jag har förstått det så kommer det programmeras en del i objektorienterad PHP.<br>
+                Det ska bli väldigt spännande!
+            </p>
+        </div>
 
-    <p>Välkommen till kursen MVC!</p>
-    <p>
-        I den här kursen ska vi utveckla våra redan befintliga kunskaper i PHP, design samt databas.<br>
-        Vi kommer att använda oss utav ramverket Symphony.
-    </p>
-
-    <a href="https://github.com/dbwebb-se/mvc">Kursens Gitrepo</a><br>
-    <a href="https://github.com/Zand9/mvc">Mitt gitrepo</a>
+    <div class="aboutbox">
+        <a href="{{ asset('img/phpprogramming.jpg') }}">
+        <img class="aboutbild" src="{{ asset('img/phpprogramming.jpg') }}" alt="Bild på PHP"></a>
+    </div>
 
 {% endblock %}
 {% block aside %}
     <aside>
-        <h1>Detta är en aside</h1>
-        <p>hej</p>
+        <h1>Länkar</h1>
+        <ul class="asidenavbar">
+            <li><a href="https://github.com/dbwebb-se/mvc">Kursens sida på Github</a></li>
+            <li><a href="https://github.com/Zand9/mvc">Min sida på Github</a></li>
+        </ul>
     </aside>
 {% endblock %}
