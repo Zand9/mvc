@@ -1,0 +1,24 @@
+/* lucky.css */
+
+.lucky {
+    padding: 1em;
+    text-align: center;
+    min-height: 100%;
+    max-width: 100%;
+}
+
+.lucky.sporty {
+    background-color: #ff00ff;
+}
+
+.lucky.sleepy {
+    background-color: #88ccff;
+}
+
+.lucky.in.love {
+    background-color: #ff4444;
+}
+
+.lucky.happy {
+    background-color: #cc99ff;
+}

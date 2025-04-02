@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API | MVC{% endblock %}
+
+{% block body %}
+    <h1>API</h1>
+
+<p>
+    Här är en lista på alla olika api-sidor som finns och vad de gör.<br>
+    Länkar till sidorna finns i asiden till höger.
+</p>
+
+
+<h2 id="quote">Quote</h2>
+<p>
+    Genererar slumpmässigt ett "dagens citat".<br>
+    Visar även dagens datum och tidsstämpel för när svaret genererades.
+</p>
+
+{% endblock %}
+{% block aside %}
+    <aside>
+        <h1>Länkar</h1>
+        <ul class="asidenavbar">
+            <li><a href="api/quote">api/quote</a></li>
+        </ul>
+    </aside>
+{% endblock %}

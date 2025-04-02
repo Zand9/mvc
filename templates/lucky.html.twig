@@ -1,9 +1,24 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Magic number{% endblock %}
+{% block title %}Lucky | MVC{% endblock %}
 
 {% block body %}
-    <h1>Magic number</h1>
-    <p>Welcome to my awesome magical homepage.</p>
-    <p>This is the current magic number: {{ number }}</p>
+<div class="lucky {{ moodName }}">
+        <h1>The CRAZY Lucky Side</h1>
+        <p>Your magic number is: <strong>{{ number }}</strong></p>
+        <p>Today's mood: <strong>{{ moodName }}</strong></p>
+        <img src="{{ asset(moodImage) }}" alt="Mood image">
+    </div>
+{% endblock %}
+
+{% block aside %}
+    <aside>
+        <h1>Tillgängliga moods:</h1>
+        <ul class="asidenavbar">
+            <li>Happy</li>
+            <li>Sporty</li>
+            <li>In Love</li>
+            <li>Sleepy</li>
+        </ul>
+    </aside>
 {% endblock %}

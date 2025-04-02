@@ -25,4 +25,10 @@ a {
 
 .asidenavbar {
     display: inline;
+
+    li {
+        display: block;
+        margin: 0.5em 0;
+        margin: 1em;
+    }
 }
