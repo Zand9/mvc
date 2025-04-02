@@ -1,5 +1,7 @@
 /* app.css */
 
+@import url("pig/pig.css");
+
 @import url("font.css");
 @import url("footer.css");
 @import url("gallery.css");
