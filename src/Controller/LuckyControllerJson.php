@@ -18,13 +18,13 @@ class LuckyControllerJson
             'lucky-message' => 'Hi there!',
         ];
 
-            // return new JsonResponse($data);
+        // return new JsonResponse($data);
 
-            $response = new JsonResponse($data);
-            $response->setEncodingOptions(
-                $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 
     #[Route("/api/quote")]
@@ -43,19 +43,19 @@ class LuckyControllerJson
             "Res dig upp - .com igen",
             "Det finns alltid en plan B"
         ];
-    
+
         $quote = $quotes[array_rand($quotes)];
-    
+
         $data = [
             'quote' => $quote,
             'date' => date('Y-m-d'),
             'timestamp' => date('H:i:s')
         ];
 
-            $response = new JsonResponse($data);
-            $response->setEncodingOptions(
-                $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-            );
-            return $response;
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+        );
+        return $response;
     }
 }

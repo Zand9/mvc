@@ -48,7 +48,7 @@ class LuckyControllerTwig extends AbstractController
     public function lucky(): Response
     {
         $number = random_int(1, 100);
-    
+
         $moods = [
             'sporty' => [
                 'image' => 'img/gifs/sporty.gif',
@@ -67,10 +67,10 @@ class LuckyControllerTwig extends AbstractController
                 'color' => '#cc99ff'
             ]
         ];
-    
+
         $moodKey = array_rand($moods);
         $mood = $moods[$moodKey];
-    
+
         return $this->render('lucky.html.twig', [
             'number' => $number,
             'moodName' => $moodKey,
