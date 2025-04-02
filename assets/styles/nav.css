@@ -22,3 +22,7 @@ li {
 a {
     margin: 5px;
 }
+
+.asidenavbar {
+    display: inline;
+}
