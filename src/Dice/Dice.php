@@ -8,7 +8,7 @@ class Dice
 
     public function __construct()
     {
-        $this->value = null;
+        $this->value = 0;
     }
 
     public function roll(): int
