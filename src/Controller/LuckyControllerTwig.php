@@ -78,4 +78,16 @@ class LuckyControllerTwig extends AbstractController
             'moodColor' => $mood['color']
         ]);
     }
+
+    #[Route("/session", name: "session")]
+    public function session(): Response
+    {
+        return $this->render('session.html.twig');
+    }
+
+    #[Route("/session/delete", name: "session_delete")]
+    public function sessionDelete(): Response
+    {
+        return $this->render('session.html.twig');
+    }
 }

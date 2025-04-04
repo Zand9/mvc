@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card | MVC{% endblock %}
+
+{% block body %}
+    <h1>Card</h1>
+
+<p>
+    Här är en lista på alla olika card-sidor som finns och vad de gör.<br>
+    Länkar till sidorna finns i asiden till höger.
+</p>
+
+<a href="{{ path('card_deck') }}">Card Deck</a>
+<a href="{{ path('card_deck_shuffle') }}">Card Deck Shuffle</a>
+
+
+<h2 id="quote">Quote</h2>
+<p>
+    Genererar slumpmässigt ett "dagens citat".<br>
+    Visar även dagens datum och tidsstämpel för när svaret genererades.
+</p>
+
+{% endblock %}
+{% block aside %}
+    <aside>
+        <h1>Länkar</h1>
+        <ul class="asidenavbar">
+            <li><a href="card">Card</a></li>
+        </ul>
+    </aside>
+{% endblock %}
