@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -88,6 +92,6 @@ class LuckyControllerTwig extends AbstractController
     #[Route("/session/delete", name: "session_delete")]
     public function sessionDelete(): Response
     {
-        return $this->render('session.html.twig');
+        return $this->redirectToRoute('session');
     }
 }
