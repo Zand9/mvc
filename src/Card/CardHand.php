@@ -2,4 +2,6 @@
 
 namespace App\Card;
 
-class CardHand {}
+class CardHand
+{
+}

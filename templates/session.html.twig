@@ -5,6 +5,17 @@
 {% block body %}
     <h1>Session</h1>
 
-{{ include('flash.html.twig') }}
+    {{ include('flash.html.twig') }}
 
-{% endblock %}
+    {% if session is empty %}
+        <p>Sessionen är tom.</p>
+    {% else %}
+        <ul>
+            {% for key, value in session %}
+                <li>{{ key }}: {{ dump(value) }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p><a href="{{ path('session_delete') }}">Rensa sessionen</a></p>
+    {% endblock %}
