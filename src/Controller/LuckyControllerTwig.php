@@ -88,13 +88,20 @@ class LuckyControllerTwig extends AbstractController
     { {
             $sessionData = $session->all();
 
-            return $this->render('session.html.twig', ['session' => $sessionData]);
+            return $this->render('session.html.twig', [
+                'session' => $sessionData
+            ]);
         }
     }
 
     #[Route("/session/delete", name: "session_delete")]
     public function sessionDelete(SessionInterface $session): Response
     {
+        $this->addFlash(
+            'notice',
+            'Your session has been deleted!'
+        );
+
         $session->clear();
         return $this->redirectToRoute('session');
     }

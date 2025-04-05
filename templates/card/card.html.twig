@@ -3,28 +3,41 @@
 {% block title %}Card | MVC{% endblock %}
 
 {% block body %}
-    <h1>Card</h1>
+<h1>Mina undersidor</h1>
+<ul class="asidenavbar">
+    <li><strong>Card Deck</strong> - Visar samtliga kort i kortleken sorterade per färg och värde.</li>
+    <li><strong>Card Deck Shuffle</strong> - Visar samtliga kort i kortleken när den har blandats.</li>
+    <li><strong>Card Deck Draw</strong> - Drar ett kort från kortleken och visar upp det. Visar även antalet kort som är kvar i kortleken.</li>
+</ul>
 
-<p>
-    Här är en lista på alla olika card-sidor som finns och vad de gör.<br>
-    Länkar till sidorna finns i asiden till höger.
-</p>
+<h1>Mina API:er</h1>
+<h3>Länkar till sidorna finns i asiden till höger.</h3>
 
-<a href="{{ path('card_deck') }}">Card Deck</a>
-<a href="{{ path('card_deck_shuffle') }}">Card Deck Shuffle</a>
-<a href="{{ path('card_deck_draw') }}">Card Deck Draw</a>
-
-
-<h2 id="quote">Quote</h2>
+<h2>Quote</h2>
 <p>
     Genererar slumpmässigt ett "dagens citat".<br>
     Visar även dagens datum och tidsstämpel för när svaret genererades.
 </p>
 
+<h1>Mina klasser</h1>
+<ul class="asidenavbar">
+    <li><strong>Card</strong> - Skapar ett kort.</li>
+    <li><strong>CardGraphic</strong></li>
+    <li><strong>CardHand</strong></li>
+    <li><strong>DeckOfCards</strong></li>
+</ul>
+
 {% endblock %}
 {% block aside %}
     <aside>
-        <h1>Länkar</h1>
+    <h1>Länkar</h1>
+        <h2>Undersidor</h2>
+        <ul class="asidenavbar">
+            <li><a href="{{ path('card_deck') }}">Card Deck</a></li>
+            <li><a href="{{ path('card_deck_shuffle') }}">Card Deck Shuffle</a></li>
+            <li><a href="{{ path('card_deck_draw') }}">Card Deck Draw</a></li>
+        </ul>
+        <h2>API</h2>
         <ul class="asidenavbar">
             <li><a href="{{ path('card_deck') }}">Card Deck</a></li>
             <li><a href="{{ path('card_deck_shuffle') }}">Card Deck Shuffle</a></li>
