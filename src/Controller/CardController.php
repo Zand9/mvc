@@ -2,14 +2,11 @@
 
 namespace App\Controller;
 
-/*
-use App\Dice\Dice;
-use App\Dice\DiceGraphic;
-use App\Dice\DiceHand;
-*/
+use App\Card\DeckOfCards;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +22,12 @@ class CardController extends AbstractController
     #[Route("/card/deck", name: "card_deck")]
     public function cardDeck(): Response
     {
-        return $this->render('card/card_deck.html.twig');
+        $deck = new DeckOfCards();
+        $cards = $deck->getCards();
+
+        return $this->render('card/card_deck.html.twig', [
+            'cards' => $cards
+        ]);
     }
 
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]

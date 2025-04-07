@@ -4,5 +4,18 @@
 
 {% block body %}
     <h1>Deck</h1>
+    <h3>Sorterad per färg och värde.</h3>
+    <p><a href="{{ path('card') }}">Tillbaka</a></p>
+    
+    <div class="deck-container">
+        {% for card in cards %}
 
+        <span class="card-box {{ card.getColor() }}">
+            {{ card.getUnicode() }}
+        </span>
+
+        {% endfor %}
+    </div>
+
+    <p><a href="{{ path('card') }}">Tillbaka</a></p>
 {% endblock %}
