@@ -2,8 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\CardGraphic;
-
 class DeckOfCards
 {
     private array $cards = [];
@@ -23,5 +21,25 @@ class DeckOfCards
                 $this->cards[] = new CardGraphic($suit, $rank);
             }
         }
+    }
+
+    public function shuffle(): void
+    {
+        shuffle($this->cards);
+    }
+
+    public function draw(int $count = 1): array
+    {
+        return array_splice($this->cards, 0, $count);
+    }
+
+    public function getCards(): array
+    {
+        return $this->cards;
+    }
+
+    public function count(): int
+    {
+        return count($this->cards);
     }
 }

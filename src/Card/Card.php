@@ -4,26 +4,22 @@ namespace App\Card;
 
 class Card
 {
-    protected $value;
+    protected string $suit;
+    protected string $rank;
 
-    public function __construct()
+    public function __construct(string $suit, string $rank)
     {
-        $this->value = 0;
+        $this->suit = $suit;
+        $this->rank = $rank;
     }
 
-    public function roll(): int
+    public function getSuit(): string
     {
-        $this->value = random_int(1, 52);
-        return $this->value;
+        return $this->suit;
     }
 
-    public function getValue(): int
+    public function getRank(): string
     {
-        return $this->value;
-    }
-
-    public function getAsString(): string
-    {
-        return "[{$this->value}]";
+        return $this->rank;
     }
 }
