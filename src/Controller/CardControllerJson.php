@@ -2,6 +2,11 @@
 
 namespace App\Controller;
 
+use App\Card\Card;
+use App\Card\CardGraphic;
+use App\Card\CardHand;
+use App\Card\DeckOfCards;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,18 +35,14 @@ class CardControllerJson
     #[Route("/api/deck")]
     public function jsonDeck(): Response
     {
-        $number = random_int(0, 100);
+        $deck = new DeckOfCards();
+        $cards = $deck->getCards();
 
-        $data = [
-            'lucky-number' => $number,
-            'lucky-message' => 'Hi there!',
-        ];
-
-        // return new JsonResponse($data);
+        $data = array_map(fn($card) => $card->getUnicode(), $cards);
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }
