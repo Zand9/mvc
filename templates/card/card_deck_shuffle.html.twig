@@ -4,5 +4,20 @@
 
 {% block body %}
     <h1>Shuffle</h1>
+    <h3>En blandad kortlek.</h3>
+    <p><a href="{{ path('card') }}">Tillbaka</a></p>
+    <p><a href="{{ path('card_deck_shuffle') }}">Blanda om</a></p>
+    <p><a href="{{ path('card_deck') }}">Sortera korten</a></p>
+    
+    <div class="deck-container">
+        {% for card in cards %}
 
+        <span class="card-box {{ card.getColor() }}">
+            {{ card.getUnicode() }}
+        </span>
+
+        {% endfor %}
+    </div>
+
+    <p><a href="{{ path('card') }}">Tillbaka</a></p>
 {% endblock %}

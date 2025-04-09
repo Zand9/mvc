@@ -6,6 +6,7 @@
     <h1>Deck</h1>
     <h3>Sorterad per färg och värde.</h3>
     <p><a href="{{ path('card') }}">Tillbaka</a></p>
+    <p><a href="{{ path('card_deck_shuffle') }}">Blanda kortleken</a></p>
     
     <div class="deck-container">
         {% for card in cards %}
