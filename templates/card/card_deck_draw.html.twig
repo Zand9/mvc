@@ -5,4 +5,34 @@
 {% block body %}
     <h1>Draw</h1>
 
+    <p>
+        <a href="{{ path('card_deck_draw', { number: 1 }) }}">Dra ett kort</a> |
+        <a href="{{ path('card_deck_shuffle') }}">Blanda om</a>
+    </p>
+
+    {% if drawn is empty %}
+        <p>Slut på kort i kortleken!</p>
+    {% else %}
+        <p>Senast dragna kort:</p>
+        <div class="deck-container">
+            {% for card in drawn %}
+                <span class="card-box {{ card.getColor() }}">
+                    {{ card.getUnicode() }}
+                </span>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <p>Kort kvar i kortleken: {{ cardsLeft }}</p>
+
+    <h3>Alla dragna kort:</h3>
+    <div class="deck-container">
+        {% for card in drawnCards %}
+            <span class="card-box {{ card.getColor() }}">
+                {{ card.getUnicode() }}
+            </span>
+        {% endfor %}
+    </div>
+
+    <p><a href="{{ path('card') }}">Tillbaka</a></p>
 {% endblock %}
