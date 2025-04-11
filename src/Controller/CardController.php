@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
-use App\Card\CardGraphic;
-use App\Card\CardHand;
 use App\Card\DeckOfCards;
 
 use Symfony\Component\HttpFoundation\Request;

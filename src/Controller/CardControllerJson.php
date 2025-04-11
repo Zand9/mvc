@@ -2,37 +2,20 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
-use App\Card\CardGraphic;
-use App\Card\CardHand;
 use App\Card\DeckOfCards;
+
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CardControllerJson
+class CardControllerJson extends AbstractController
 {
-    #[Route("/api/card")]
-    public function jsonCard(): Response
-    {
-        $number = random_int(0, 100);
-
-        $data = [
-            'lucky-number' => $number,
-            'lucky-message' => 'Hi there!',
-        ];
-
-        // return new JsonResponse($data);
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
-
-    #[Route("/api/deck")]
+    #[Route("/api/deck", name: "api_deck")]
     public function jsonDeck(): Response
     {
         $deck = new DeckOfCards();
@@ -47,40 +30,50 @@ class CardControllerJson
         return $response;
     }
 
-    #[Route("/api/deck/draw", name: "api_deck_draw", methods: ["POST"])]
-    public function jsonDraw(): Response
+    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["GET", "POST"])]
+    public function apiDeckShuffle(SessionInterface $session): JsonResponse
     {
-        $number = random_int(0, 100);
+        $deck = new DeckOfCards();
+        $deck->shuffle();
 
-        $data = [
-            'lucky-number' => $number,
-            'lucky-message' => 'Hi there!',
-        ];
+        $session->set("deck", $deck);
+        $session->remove("drawn_cards");
 
-        // return new JsonResponse($data);
+        $cards = $deck->getCards();
+        $data = array_map(fn($card) => $card->getUnicode(), $cards);
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["POST"])]
-    public function jsonShuffle(): Response
+    #[Route("/api/deck/draw/{number<\d+>?1}", name: "api_deck_draw", methods: ["GET", "POST"])]
+    public function apiDeckDraw(int $number, SessionInterface $session): JsonResponse
     {
-        $number = random_int(0, 100);
+        $deck = $session->get("deck") ?? new DeckOfCards();
+
+        $drawCount = min($number, $deck->count());
+        $drawn = $deck->draw($drawCount);
+
+        $drawnCards = $session->get("drawn_cards", []);
+        foreach ($drawn as $card) {
+            $drawnCards[] = $card;
+        }
+
+        $session->set("deck", $deck);
+        $session->set("drawn_cards", $drawnCards);
 
         $data = [
-            'lucky-number' => $number,
-            'lucky-message' => 'Hi there!',
+            'drawn' => array_map(fn($card) => $card->getUnicode(), $drawn),
+            'drawnCards' => array_map(fn($card) => $card->getUnicode(), $drawnCards),
+            'cardsLeft' => $deck->count()
         ];
-
-        // return new JsonResponse($data);
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }
