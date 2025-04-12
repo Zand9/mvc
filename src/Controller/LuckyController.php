@@ -14,12 +14,12 @@ class LuckyController
         $number = random_int(0, 100);
 
         return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
+            '<html><body>Lucky number: ' . $number . '</body></html>'
         );
     }
 
     #[Route("/lucky/hi")]
-    public function hi(): Response
+    public function hello(): Response
     {
         return new Response(
             '<html><body><p>Hej på dig!</p></body></html>'

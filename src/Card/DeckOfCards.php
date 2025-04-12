@@ -45,6 +45,6 @@ class DeckOfCards
 
     public function sort(): void
     {
-        usort($this->cards, fn ($a, $b) => $a->getUnicode() <=> $b->getUnicode());
+        usort($this->cards, fn($first, $second) => $first->getUnicode() <=> $second->getUnicode());
     }
 }
