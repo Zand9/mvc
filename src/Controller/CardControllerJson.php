@@ -3,12 +3,9 @@
 namespace App\Controller;
 
 use App\Card\DeckOfCards;
-
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,7 +25,7 @@ class CardControllerJson extends AbstractController
 
         $session->set("deck", $deck);
 
-        $data = array_map(fn($card) => $card->getUnicode(), $deck->getCards());
+        $data = array_map(fn ($card) => $card->getUnicode(), $deck->getCards());
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
@@ -47,7 +44,7 @@ class CardControllerJson extends AbstractController
         $session->remove("drawn_cards");
 
         $cards = $deck->getCards();
-        $data = array_map(fn($card) => $card->getUnicode(), $cards);
+        $data = array_map(fn ($card) => $card->getUnicode(), $cards);
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
@@ -73,8 +70,8 @@ class CardControllerJson extends AbstractController
         $session->set("drawn_cards", $drawnCards);
 
         $data = [
-            'drawn' => array_map(fn($card) => $card->getUnicode(), $drawn),
-            'drawnCards' => array_map(fn($card) => $card->getUnicode(), $drawnCards),
+            'drawn' => array_map(fn ($card) => $card->getUnicode(), $drawn),
+            'drawnCards' => array_map(fn ($card) => $card->getUnicode(), $drawnCards),
             'cardsLeft' => $deck->count()
         ];
 

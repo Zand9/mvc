@@ -84,8 +84,8 @@ class LuckyControllerTwig extends AbstractController
 
     #[Route("/session", name: "session")]
     public function session(SessionInterface $session): Response
-
-    { {
+    {
+        {
             $sessionData = $session->all();
 
             return $this->render('session.html.twig', [
