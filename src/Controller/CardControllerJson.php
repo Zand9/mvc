@@ -16,12 +16,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class CardControllerJson extends AbstractController
 {
     #[Route("/api/deck", name: "api_deck")]
-    public function jsonDeck(): Response
+    public function jsonDeck(SessionInterface $session): Response
     {
-        $deck = new DeckOfCards();
-        $cards = $deck->getCards();
+        $deck = $session->get("deck");
 
-        $data = array_map(fn($card) => $card->getUnicode(), $cards);
+        if (!$deck) {
+            $deck = new DeckOfCards();
+        }
+
+        $deck->sort();
+
+        $session->set("deck", $deck);
+
+        $data = array_map(fn($card) => $card->getUnicode(), $deck->getCards());
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

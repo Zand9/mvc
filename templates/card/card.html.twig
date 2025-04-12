@@ -11,20 +11,14 @@
     <li><strong>Card Deck Draw</strong> - Drar ett kort från kortleken och visar upp det. Visar även antalet kort som är kvar i kortleken.</li>
 </ul>
 
-<h1>Mina API:er</h1>
-
-<h2>Quote</h2>
-<p>
-    Genererar slumpmässigt ett "dagens citat".<br>
-    Visar även dagens datum och tidsstämpel för när svaret genererades.
-</p>
-
 <h1>Mina klasser</h1>
 <ul class="asidenavbar">
-    <li><strong>Card</strong> - Skapar ett kort.</li>
-    <li><strong>CardGraphic</strong></li>
-    <li><strong>CardHand</strong></li>
-    <li><strong>DeckOfCards</strong></li>
+    <li><strong>Card</strong> - Grundklassen. Representerar ett spelkort. 
+        Innehåller metoder för att hämta färg och valör.</li>
+    <li><strong>CardGraphic</strong> - Ärver från Card. Ger spelkortet ett utseende.</li>
+    <li><strong>CardHand</strong> - En korthand som kan innehålla ett godtyckligt antal kort.</li>
+    <li><strong>DeckOfCards</strong> - Representerar hela kortleken. Skapar kortleken när objektet skapas.
+        Har metoder för att hantera kortleken. Till exempel blanda, dra kort, räkna återstående kort.</li>
 </ul>
 
 {% endblock %}

@@ -42,4 +42,9 @@ class DeckOfCards
     {
         return count($this->cards);
     }
+
+    public function sort(): void
+    {
+        usort($this->cards, fn($a, $b) => $a->getUnicode() <=> $b->getUnicode());
+    }
 }

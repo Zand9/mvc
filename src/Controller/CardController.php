@@ -20,13 +20,22 @@ class CardController extends AbstractController
     }
 
     #[Route("/card/deck", name: "card_deck")]
-    public function cardDeck(): Response
+    public function cardDeck(SessionInterface $session): Response
     {
-        $deck = new DeckOfCards();
-        $cards = $deck->getCards();
+        $deck = $session->get("deck");
+
+        if (!$deck) {
+            $deck = new DeckOfCards();
+        }
+
+        $deck->sort();
+
+        $session->set("deck", $deck);
+
+        $sortedCards = $deck->getCards();
 
         return $this->render('card/card_deck.html.twig', [
-            'cards' => $cards
+            'cards' => $sortedCards
         ]);
     }
 
