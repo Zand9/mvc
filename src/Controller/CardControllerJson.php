@@ -34,47 +34,63 @@ class CardControllerJson extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["GET", "POST"])]
+    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["POST"])]
     public function apiDeckShuffle(SessionInterface $session): JsonResponse
     {
         $deck = new DeckOfCards();
         $deck->shuffle();
-
+    
         $session->set("deck", $deck);
         $session->remove("drawn_cards");
-
+    
         $cards = $deck->getCards();
-        $data = array_map(fn ($card) => $card->getUnicode(), $cards);
-
-        $response = new JsonResponse($data);
+        $unicodeCards = [];
+    
+        foreach ($cards as $card) {
+            $unicodeCards[] = $card->getUnicode();
+        }
+    
+        $response = new JsonResponse($unicodeCards);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }
-
-    #[Route("/api/deck/draw/{number<\d+>?1}", name: "api_deck_draw", methods: ["GET", "POST"])]
-    public function apiDeckDraw(int $number, SessionInterface $session): JsonResponse
+    
+    #[Route("/api/deck/draw/{number<\d+>?1}", name: "api_deck_draw", methods: ["POST"])]
+    public function apiDeckDraw(Request $request, int $number, SessionInterface $session): JsonResponse
     {
+        $formNumber = $request->request->getInt('number', $number);
+    
         $deck = $session->get("deck") ?? new DeckOfCards();
-
-        $drawCount = min($number, $deck->count());
+    
+        $drawCount = min($formNumber, $deck->count());
         $drawn = $deck->draw($drawCount);
-
+    
         $drawnCards = $session->get("drawn_cards", []);
         foreach ($drawn as $card) {
             $drawnCards[] = $card;
         }
-
+    
         $session->set("deck", $deck);
         $session->set("drawn_cards", $drawnCards);
-
+    
+        $drawnUnicode = [];
+        foreach ($drawn as $card) {
+            $drawnUnicode[] = $card->getUnicode();
+        }
+    
+        $drawnCardsUnicode = [];
+        foreach ($drawnCards as $card) {
+            $drawnCardsUnicode[] = $card->getUnicode();
+        }
+    
         $data = [
-            'drawn' => array_map(fn ($card) => $card->getUnicode(), $drawn),
-            'drawnCards' => array_map(fn ($card) => $card->getUnicode(), $drawnCards),
+            'drawn' => $drawnUnicode,
+            'drawnCards' => $drawnCardsUnicode,
             'cardsLeft' => $deck->count()
         ];
-
+    
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE

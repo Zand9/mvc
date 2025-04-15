@@ -5,11 +5,22 @@
 {% block body %}
     <h1>API</h1>
 
+    <h2>Blanda kortleken</h2>
+<form method="post" action="{{ path('api_deck_shuffle') }}">
+    <button type="submit">Blanda</button>
+</form>
+
+<h2>Dra kort</h2>
+<form method="post" action="{{ path('api_deck_draw') }}">
+    <label for="number">Antal kort att dra:</label>
+    <input type="number" name="number" id="number" min="1" max="52">
+    <button type="submit">Dra</button>
+</form>
+
 <p>
     Här är en lista på alla olika api-sidor som finns och vad de gör.<br>
     Länkar till sidorna finns i asiden till höger.
 </p>
-
 
 <h2>Quote</h2>
 <p>
@@ -40,8 +51,6 @@
         <ul class="asidenavbar">
             <li><a href="api/quote">api/quote</a></li>
             <li><a href="api/deck">api/deck</a></li>
-            <li><a href="api/deck/shuffle">api/deck/shuffle</a></li>
-            <li><a href="api/deck/draw">api/deck/draw</a></li>
         </ul>
     </aside>
 {% endblock %}
